@@ -1,0 +1,25 @@
+.cnab_file_container button
+{
+    border: none;
+    padding: 0 30px;
+    line-height: 40px;
+    font-size: 18px;
+    border: 1px solid #4285F4;
+    background-color: #fff;
+    color: #4285F4;
+    border-radius: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: 0.2s background-color;
+}
+
+.cnab_file_container button:hover
+{
+    background-color: #4285F4;
+    color: #fff;
+}
+
+.cnab_file_container input 
+{
+    display: none;
+}

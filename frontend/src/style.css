@@ -1,0 +1,13 @@
+body 
+{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.section-title 
+{
+    background-color: #efefef;
+    margin-top: 0;
+    font-size: 20px;
+    padding: 5px 10px;
+    font-weight: 400;
+}
