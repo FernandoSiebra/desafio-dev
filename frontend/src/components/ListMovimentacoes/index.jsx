@@ -37,7 +37,6 @@ function ListMovimentacoes()
                 porLoja[item.lojaNome] = [];
                 saldoPorLoja[item.lojaNome] = 0;
             }
-            saldoPorLoja[item.lojaNome] =  saldoPorLoja[item.lojaNome];
             return porLoja[item.lojaNome].push(item);
         });
 
@@ -61,7 +60,7 @@ function ListMovimentacoes()
         <div className='conteinerBorder'>
             <h2 className="section-title">
                 Dados importados
-                <a href="#" class="btn-aux" onClick={limparDados}>Limpar dados</a>
+                <a href="#" className="btn-aux" onClick={limparDados}>Limpar dados</a>
             </h2>
             {Object.keys(movimentacoesPorLoja).map(loja => {
                 return (
