@@ -60,7 +60,7 @@ function ListMovimentacoes()
         <div className='conteinerBorder'>
             <h2 className="section-title">
                 Dados importados
-                <a href="#" className="btn-aux" onClick={limparDados}>Limpar dados</a>
+                <a className="btn-aux" onClick={limparDados}>Limpar dados</a>
             </h2>
             {Object.keys(movimentacoesPorLoja).map(loja => {
                 return (
