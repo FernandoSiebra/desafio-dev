@@ -9,16 +9,18 @@ function ListItemMovimentacao ({lojaNome, movimentacoes})
     const [saldo, setSaldo] = useState(0);
 
     useEffect(()=>{
+        let saldo = 0;
         movimentacoes.map(item => {
             if( item['natureza'] === "Entrada" )
             {
-                setSaldo(saldo + parseFloat(item['valor']));
+                saldo += parseFloat(item['valor']);
             }
             else 
             {
-                setSaldo(saldo - parseFloat(item['valor']));
+                saldo -= parseFloat(item['valor']);
             }
         });
+        setSaldo(saldo)
     }, [])
 
     return (
