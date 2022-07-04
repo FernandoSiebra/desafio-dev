@@ -1,24 +1,24 @@
 # preparar frontend
 
-cd frontend
-npm install
+1. cd frontend
+2. npm install
 
 # preparar backend
 
-cd api
-npm install
+1. cd api
+2. npm install
 
 # preparar banco de dados
 
-na raiz do projeto execute:
-docker-compose up
+1. na raiz do projeto execute:
+2. docker-compose up
 
 # executar backend
 
-na raiz do projeto execute:
-nodemon api/api/index.js
+1. na raiz do projeto execute:
+2. nodemon api/api/index.js
 
 # executar frontend
 
-cd frontend
-npm run start
+1. cd frontend
+2. npm run start
