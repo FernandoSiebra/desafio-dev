@@ -5,8 +5,8 @@ import BtnSubmit from '../BtnSubmit'
 
 import { apiPost } from '../../api';
 
-import './style.css';
 import { useState } from 'react';
+
 
 function FormUpload()
 {
@@ -31,17 +31,20 @@ function FormUpload()
 
         apiPost('upload', formData)
             .then( data => {
-                console.log(data);
+                window.location.reload();
             });
 
     }
 
     return (
-        <form id="form-upload" onSubmit={handleSubmit}>
-            <h2 className="section-title">Envio de arquivo</h2>
-            <InputFileUpload handleChange={updateStateCnabFile} />
-            <BtnSubmit />
-        </form>
+        <div>
+            <form id="form-upload" className="conteinerBorder" onSubmit={handleSubmit}>
+                <h2 className="section-title">Envio de arquivo</h2>
+                <InputFileUpload handleChange={updateStateCnabFile} />
+                <BtnSubmit />
+            </form>
+            
+        </div>
     )
 }
 

@@ -1,0 +1,22 @@
+.loja-nome 
+{
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.tabela-movimentacao
+{
+    border-collapse: collapse;
+}
+.tabela-movimentacao th, td
+{
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 5px;
+}
+
+.tabela-movimentacao th 
+{
+    background-color: #efefef;
+}
