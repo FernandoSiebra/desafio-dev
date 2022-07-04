@@ -55,7 +55,7 @@ class MovimentacaoModel {
             `INSERT INTO movimentacoes
                 (tipo,mov_data,valor,cpf,cartao,hora,loja_dono,loja_nome)
             VALUES
-                ($1,$2,$3,$4,$5,$6,$7,$8);`,
+                (?,?,?,?,?,?,?,?);`,
             [ 
                 this.tipo,
                 this.data,
@@ -72,9 +72,8 @@ class MovimentacaoModel {
 
     async getAll(dbConnection)
     {
-        const res = await dbConnection.query({
-            rowMode: 'array',
-            text : `SELECT 
+        const res = await dbConnection.query(
+          `SELECT 
                         id,
                         tipo,
                         mov_data,
@@ -86,31 +85,34 @@ class MovimentacaoModel {
                         loja_nome
                     FROM movimentacoes
                     ORDER BY loja_nome`
-        });
+        );
+;
 
-        const movimentacoes = res.rows.map( row => {
+        const movimentacoes = res.map( row => {
             let obj = new MovimentacaoModel();
-            obj.id = row[0];
-            obj.tipo = row[1];
+            
+            obj.id = row.id;
+            obj.tipo = row.tipo;
             obj.tipoLabel = obj.getTipoLabel();
             obj.natureza = obj.getNatureza();
-            obj.data = row[2];
+            obj.data = row.mov_data;
             obj.dataFormatada = new Date(
-                row[2].substr(0,4),
-                row[2].substr(4,2)-1,
-                row[2].substr(6,2),
+                row.mov_data.substr(0,4),
+                row.mov_data.substr(4,2)-1,
+                row.mov_data.substr(6,2),
             ).toLocaleDateString();
-            obj.valor = row[3];
-            obj.cpf = row[4];
-            obj.cartao = row[5];
-            obj.hora = row[6];
-            obj.horaFormatada = `${row[6].substr(0,2)}:${row[6].substr(2,2)}`;
-            obj.lojaDono = row[7];
-            obj.lojaNome = row[8];
+            obj.valor = row.valor;
+            obj.cpf = row.cpf;
+            obj.cartao = row.cartao;
+            obj.hora = row.hora;
+            obj.horaFormatada = `${row.hora.substr(0,2)}:${row.hora.substr(2,2)}`;
+            obj.lojaDono = row.loja_dono;
+            obj.lojaNome = row.loja_nome;
             return obj;
         })
 
         return movimentacoes;
+        // return [];
 
     }
 

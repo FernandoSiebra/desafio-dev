@@ -1,5 +1,5 @@
 
-const ConnectionSingleton = require('../system/ConnectionSingleton');
+const pool = require('../system/mariaDB');
 
 const MovimentacaoModel = require('../models/MovimentacaoModel')
 
@@ -22,9 +22,10 @@ class CnabController{
 
     static async clean(req, res)
     {
-        const dbConnection = await ConnectionSingleton.getInstance();
+        // const dbConnection = await ConnectionSingleton.getInstance();
+        const conn = await pool.getConnection();
         const objMovimentacao = new MovimentacaoModel()
-        await objMovimentacao.clean(dbConnection);
+        await objMovimentacao.clean(conn);
         res.status(200).end();
     }
 
@@ -40,17 +41,19 @@ class CnabController{
 
     static async salvarMovimentacoes(movimentacoes)
     {
-        const dbConnection = await ConnectionSingleton.getInstance();
+        // const dbConnection = await ConnectionSingleton.getInstance();
+        const conn = await pool.getConnection();
         movimentacoes.forEach( async item => {
-            await item.save(dbConnection);
+            await item.save(conn);
         });
     }
 
     static async obterMovimentacoes()
     {
-        const dbConnection = await ConnectionSingleton.getInstance();
+        // const dbConnection = await ConnectionSingleton.getInstance();
+        const conn = await pool.getConnection();
         const objMovimentacao = new MovimentacaoModel()
-        const movimentacoes = await objMovimentacao.getAll(dbConnection);
+        const movimentacoes = await objMovimentacao.getAll(conn);
         return movimentacoes;
     }
     

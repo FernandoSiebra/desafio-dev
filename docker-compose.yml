@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+
+    desafio_dev_mariadb:
+        container_name: desafio_dev_mariadb
+        build:
+            context: ./docker/mariadb
+            dockerfile: Dockerfile
+        ports:
+            - "3306:3306"
+        restart: always
+        volumes:
+            - ./docker/mariadb/data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: pass
+            TZ: America/Sao_Paulo
+        

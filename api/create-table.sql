@@ -1,5 +1,5 @@
 CREATE TABLE movimentacoes(
-    id SERIAL,
+    id INT NOT NULL AUTO_INCREMENT,
     tipo VARCHAR(1),
     mov_data VARCHAR(8),
     valor DECIMAL(15,2),
